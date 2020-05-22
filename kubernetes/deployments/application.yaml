@@ -6,7 +6,7 @@ metadata:
   labels:
     app: go
 spec:
-  replicas: 10
+  replicas: 10000
   selector:
     matchLabels:
       app: go

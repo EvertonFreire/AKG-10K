@@ -27,3 +27,6 @@
     - import_role:
         name: cluster
         tasks_from: service-cluster-configure
+    - import_role:
+        name: cluster
+        tasks_from: ingress-cluster-configure

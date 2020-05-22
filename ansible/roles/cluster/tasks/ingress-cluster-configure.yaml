@@ -1,0 +1,14 @@
+- name: Configure Ingress for service
+  become: false
+  k8s:
+    state: present
+    src: ../kubernetes/ingress/application-ingress.yaml
+    apply: true
+    validate:
+      fail_on_error: true
+  delegate_to: localhost
+
+- name: Expose minicluster
+  become: false
+  shell: |
+    minikube service hello-go
