@@ -1,0 +1,17 @@
+
+- name: Check that the minikube exists
+  stat:
+    path: /usr/bin/minikube
+  register: stat_result
+
+- name: Install minikube cluster
+  become: true
+  shell: |
+    cd /tmp
+    curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube_latest_amd64.deb
+    sudo dpkg -i minikube_latest_amd64.deb
+  when: not stat_result.stat.exists
+
+- name: Start minikube
+  become: false
+  shell: minikube start && exit 0

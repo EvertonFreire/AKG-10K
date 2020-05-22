@@ -1,0 +1,15 @@
+- name: Configure Go Docker
+  become: true
+  docker_image:
+    name: "{{ docker_image }}"
+    push: yes
+    tag: latest
+    force_tag: yes
+    repository: "{{ docker_image }}"
+    build:
+      pull: no
+      path: ../go-app
+      cache_from:
+        - ubuntu:latest
+    source: build
+  delegate_to: localhost

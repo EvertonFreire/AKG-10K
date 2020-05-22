@@ -1,0 +1,29 @@
+---
+
+- name: Kubernetes Cluster With 10k Go pods
+  become: true
+  hosts: localhost
+  connection: local
+  vars:
+    user: "evertonfs"
+    docker_image: "evertonfreire/hello-go"
+
+  collections:
+    - community.kubernetes
+
+  tasks:
+    - import_role:
+        name: dependencies
+        tasks_from: apt-dependencies
+    - import_role:
+        name: application
+        tasks_from: go-docker
+    - import_role:
+        name: cluster
+        tasks_from: cluster-configure
+    - import_role:
+        name: cluster
+        tasks_from: deployment-cluster-configure
+    - import_role:
+        name: cluster
+        tasks_from: service-cluster-configure

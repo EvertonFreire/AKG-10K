@@ -1,0 +1,8 @@
+- name: Configure Service for deployment
+  become: false
+  k8s:
+    state: present
+    src: ../kubernetes/services/application-service.yaml
+    validate:
+      fail_on_error: true
+  delegate_to: localhost

@@ -1,0 +1,8 @@
+- name: Configure Deployment
+  become: false
+  k8s:
+    state: present
+    src: ../kubernetes/deployments/application.yaml
+    validate:
+      fail_on_error: true
+  delegate_to: localhost
