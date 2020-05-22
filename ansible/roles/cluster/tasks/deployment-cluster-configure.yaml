@@ -3,7 +3,7 @@
   k8s:
     state: present
     src: ../kubernetes/deployments/application.yaml
-    force: true
+    apply: true
     validate:
       fail_on_error: true
   delegate_to: localhost

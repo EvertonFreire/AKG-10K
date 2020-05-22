@@ -1,7 +1,7 @@
 package main
 
 import (
-	"encoding/json"
+	"fmt"
 	"github.com/gorilla/mux"
 	"log"
 	"net/http"
@@ -13,6 +13,6 @@ func main() {
 	log.Fatal(http.ListenAndServe(":8080", router))
 }
 
-func hello() string {
-	return "Hello World -> Olá Go 10K"
+func hello() {
+	fmt.Printf("%s\n", "Hello World -> Olá Go 10K")
 }
