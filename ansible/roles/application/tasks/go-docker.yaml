@@ -2,7 +2,6 @@
   become: true
   docker_image:
     name: "{{ docker_image }}"
-    push: yes
     tag: latest
     force_tag: yes
     repository: "{{ docker_image }}"
